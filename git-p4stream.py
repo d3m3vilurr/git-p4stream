@@ -306,7 +306,6 @@ class Shelve(Command):
             pass
         # file add
         for p in adds:
-            print p, os.path.exists(p)
             p4_read_pipe(['add', p])
         # create new changeset
         if not args.changeset:
@@ -322,7 +321,6 @@ class Shelve(Command):
             change = str(args.changeset)
         # move file to changeset
         for f in opened:
-            print f
             p4_read_pipe(['reopen', '-c', change, f])
         # shelve all files
         p4_read_pipe(['shelve', '-c', change, '-r'])
