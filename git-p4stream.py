@@ -49,8 +49,6 @@ def write_pipe(cmd, stdin):
                          shell=isinstance(cmd, basestring))
     (out, err) = p.communicate(stdin)
     if p.wait():
-        print out
-        print err
         die('Command failed: %s' % cmd)
     return out
 
