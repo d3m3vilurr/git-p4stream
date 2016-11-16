@@ -16,13 +16,13 @@
     ```bash
     git p4 sync --branch=branch_name //stream/branch/subdir/@all
     git config git-p4stream.sync subdir
-    git config git-p4stream.maps branch_name://stream/branch
+    git config --add git-p4stream.maps branch_name://stream/branch
     ```
 
     If you use virtual stream you can set this map information.
 
     ```bash
-    git config git-p4stream.maps branch_name://stream/orig://stream/virtual
+    git config --add git-p4stream.maps branch_name://stream/orig://stream/virtual
     ```
 
 
