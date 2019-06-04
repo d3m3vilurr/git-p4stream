@@ -262,7 +262,7 @@ class Shelve(Command):
 
     def run(self, args):
         # first require sync remote repo
-        p4_read_pipe('sync')
+        p4_read_pipe('sync', ignore_error=True)
         # check mergeable
         master = git_ref('p4/master')
         merge_base = read_pipe(['git', 'merge-base', 'p4/master', 'HEAD']).strip()
@@ -297,6 +297,7 @@ class Shelve(Command):
                 cmd = 'delete'
             p4_read_pipe([cmd, p])
         # patch files
+        p4_read_pipe(['clean', os.path.join(path, '...')])
         patch = read_pipe(['git', 'diff', '%s..' % master])
         try:
             write_pipe(['patch', '-p1', '-fNd', path], patch)
